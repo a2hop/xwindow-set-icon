@@ -1,0 +1,45 @@
+# Build directories
+build/
+*.o
+*.a
+*.so
+*.dylib
+
+# Executables
+xwindow-icon-set
+*.exe
+*.out
+*.app
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Dependency directories
+node_modules/
+
+# Compiled Object files
+*.slo
+*.lo
+
+# Compiled Dynamic libraries
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.lib
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Core dumps
+core
+core.*
