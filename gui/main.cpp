@@ -315,26 +315,17 @@ int main(int argc, char *argv[]) {
     std::string icon_dir;
     
     // Parse command line options before GTK init
-    static struct option long_options[] = {
-        {"icon-src", required_argument, 0, 'i'},
-        {"help", no_argument, 0, 'h'},
-        {0, 0, 0, 0}
-    };
-    
-    int opt;
-    int option_index = 0;
-    while ((opt = getopt_long(argc, argv, "h", long_options, &option_index)) != -1) {
-        switch (opt) {
-            case 'i':
-                icon_dir = optarg;
-                break;
-            case 'h':
-                print_usage(argv[0]);
-                return 0;
-            default:
-                print_usage(argv[0]);
-                return 1;
+    // Look for --icon-src= argument, ignore all other arguments
+    for (int i = 1; i < argc; i++) {
+        std::string arg = argv[i];
+        if (arg.find("--icon-src=") == 0) {
+            icon_dir = arg.substr(11); // Length of "--icon-src="
+            break;
+        } else if (arg == "--help" || arg == "-h") {
+            print_usage(argv[0]);
+            return 0;
         }
+        // Ignore any other arguments
     }
     
     // Check if icon-src was provided
